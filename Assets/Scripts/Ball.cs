@@ -84,4 +84,14 @@ public class Ball : MonoBehaviour
             }
         }
     }
+
+
+    //resetear pelota con voz
+     public void ResetBall()
+    {
+        transform.position = initialPosition;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.AddForce(ImpulsoInicial, ForceMode.Impulse);
+    }
 }

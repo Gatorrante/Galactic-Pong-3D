@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+  m_IndirectSpecularColor: {r: 0.020080116, g: 0.042136967, b: 0.060501553, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2324,6 +2325,9 @@ PrefabInstance:
       addedObject: {fileID: 1943787572}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 21ce060e2f8fb113181ce3e384b1e34c, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1943787575}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 21ce060e2f8fb113181ce3e384b1e34c, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1943787571}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 21ce060e2f8fb113181ce3e384b1e34c, type: 3}
       insertIndex: -1
@@ -2418,7 +2422,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 145
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -3112,6 +3116,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1943787574 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 21ce060e2f8fb113181ce3e384b1e34c, type: 3}
+  m_PrefabInstance: {fileID: 1425863250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1943787575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943787568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5207e899cc154f4bbf6ee7bd48ad930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 1943787574}
+  ball: {fileID: 696669039}
 --- !u!1 &2070414124
 GameObject:
   m_ObjectHideFlags: 0
