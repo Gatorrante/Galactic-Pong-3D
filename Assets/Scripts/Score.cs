@@ -1,48 +1,103 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necesario para acceder a la información de las escenas
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
     public int scorePlayerRight;
     public int scorePlayerLeft;
-    public GUIStyle style = new GUIStyle(); // Inicializa el estilo de texto para la GUI
-    public GUIStyle levelStyle = new GUIStyle(); // Inicializa un nuevo estilo de texto para el nivel
+    public int playerLives = 4; // Vidas iniciales del jugador
+    public GUIStyle style = new GUIStyle();
+    public GUIStyle levelStyle = new GUIStyle();
+    public GUIStyle livesStyle = new GUIStyle(); // Estilo para las vidas
+
+    private int scoreToWin = 5; // Puntuación necesaria para ganar o reiniciar
 
     void Start()
     {
-        // Configura el tamaño de la fuente para el nivel
-        levelStyle.fontSize = 20; // Tamaño de fuente más pequeño para el nivel
-        levelStyle.alignment = TextAnchor.MiddleCenter; // Centrar texto del nivel
-        levelStyle.normal.textColor = Color.white; // Asegúrate de configurar un color de texto
+        // Configura el estilo de las vidas
+        livesStyle.fontSize = 20;
+        livesStyle.alignment = TextAnchor.MiddleCenter;
+        livesStyle.normal.textColor = Color.white;
 
-        style.fontSize = 30; // Tamaño de fuente para el puntaje
-        style.alignment = TextAnchor.MiddleCenter; // Centrar el puntaje
-        style.normal.textColor = Color.white; // Configurar color de texto para el puntaje
+        // Configura el estilo del nivel y del puntaje
+        levelStyle.fontSize = 20;
+        levelStyle.alignment = TextAnchor.MiddleCenter;
+        levelStyle.normal.textColor = Color.white;
+
+        style.fontSize = 30;
+        style.alignment = TextAnchor.MiddleCenter;
+        style.normal.textColor = Color.white;
     }
 
     void OnGUI()
     {
+        DisplayGUI();
+    }
+
+    void DisplayGUI()
+    {
         float x = Screen.width / 2f;
-        float y = Screen.height - 40f; // Posición inicial Y para el título del nivel, cerca del fondo de la pantalla
+        float y = Screen.height - 40f;
+        float width = 200f;
+        float height = 20f;
+        float scoreWidth = 300f;
+        float scoreHeight = 40f;
 
-        float width = 200f; // Ancho más estrecho para el título del nivel
-        float height = 20f; // Altura adecuada para el texto del nivel
-        float scoreWidth = 300f; // Ancho para el puntaje
-        float scoreHeight = 40f; // Altura para el puntaje
-
-        // Obtener el nombre de la escena actual y usarlo como título del nivel
         string nivelText = SceneManager.GetActiveScene().name;
-
-        // Mostrar el título del nivel en la parte inferior de la pantalla
         GUI.Label(new Rect(x - (width / 2f), y, width, height), nivelText, levelStyle);
 
-        // Posición para el puntaje
-        float scoreY = y - scoreHeight - 10; // Ajustar la posición Y para el puntaje para que aparezca arriba del nivel
-
-        // Puntuación actual
+        float scoreY = y - scoreHeight - 10;
         string scoreText = scorePlayerLeft + " - " + scorePlayerRight;
-
-        // Mostrar la puntuación
         GUI.Label(new Rect(x - (scoreWidth / 2f), scoreY, scoreWidth, scoreHeight), scoreText, style);
+
+        float livesY = scoreY - height - 10;
+        string livesText = "Vidas: " + playerLives;
+        GUI.Label(new Rect(x - (width / 2f), livesY, width, height), livesText, livesStyle);
+    }
+
+    public void PlayerScoresPoint()
+    {
+        scorePlayerLeft++;
+        CheckGameStatus();
+    }
+
+    public void EnemyScoresPoint()
+    {
+        scorePlayerRight++;
+        LoseLife();
+        CheckGameStatus();
+    }
+
+    private void CheckGameStatus()
+    {
+        if (scorePlayerLeft >= scoreToWin)
+        {
+            LoadNextLevel();
+        }
+        else if (scorePlayerRight >= scoreToWin)
+        {
+            RestartLevel();
+        }
+    }
+
+    public void LoseLife()
+    {
+        playerLives--;
+        if (playerLives <= 0)
+        {
+            RestartLevel();
+        }
+    }
+
+    private void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+
