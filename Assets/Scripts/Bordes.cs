@@ -20,14 +20,14 @@ public class Bordes : MonoBehaviour
             if (player == ePlayer.Right)
             {
                 // Punto para el jugador izquierdo porque el borde derecho fue golpeado
-                score.scorePlayerLeft++;
+                //score.scorePlayerLeft++;
                 score.PlayerScoresPoint();
                 Debug.Log("Punto para el jugador izquierdo");
             }
             else if (player == ePlayer.Left)
             {
                 // Punto para el jugador derecho porque el borde izquierdo fue golpeado
-                score.scorePlayerRight++;
+                //score.scorePlayerRight++;
                 score.EnemyScoresPoint();
                 Debug.Log("Punto para el jugador derecho");
             }
