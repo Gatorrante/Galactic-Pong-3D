@@ -6,11 +6,13 @@ public class Score : MonoBehaviour
     public int scorePlayerRight;
     public int scorePlayerLeft;
     public int playerLives = 4; // Vidas iniciales del jugador
-    public GUIStyle style = new GUIStyle();
-    public GUIStyle levelStyle = new GUIStyle();
     public GUIStyle livesStyle = new GUIStyle(); // Estilo para las vidas
 
     private int scoreToWin = 5; // Puntuación necesaria para ganar o reiniciar
+
+    // Referencias a los objetos TextMesh
+    public TextMesh puntajeRightTextMesh;
+    public TextMesh puntajeLeftTextMesh;
 
     void Start()
     {
@@ -19,51 +21,48 @@ public class Score : MonoBehaviour
         livesStyle.alignment = TextAnchor.MiddleCenter;
         livesStyle.normal.textColor = Color.white;
 
-        // Configura el estilo del nivel y del puntaje
-        levelStyle.fontSize = 20;
-        levelStyle.alignment = TextAnchor.MiddleCenter;
-        levelStyle.normal.textColor = Color.white;
+        // Asigna las referencias a los objetos TextMesh
+        puntajeRightTextMesh = GameObject.Find("Puntaje_R").GetComponent<TextMesh>();
+        puntajeLeftTextMesh = GameObject.Find("Puntaje_L").GetComponent<TextMesh>();
 
-        style.fontSize = 30;
-        style.alignment = TextAnchor.MiddleCenter;
-        style.normal.textColor = Color.white;
+        // Inicializa los valores de los TextMesh
+        UpdateScoreText();
     }
 
     void OnGUI()
     {
-        DisplayGUI();
+        DisplayLives();
     }
 
-    void DisplayGUI()
+    void DisplayLives()
     {
         float x = Screen.width / 2f;
         float y = Screen.height - 40f;
         float width = 200f;
         float height = 20f;
-        float scoreWidth = 300f;
-        float scoreHeight = 40f;
 
-        string nivelText = SceneManager.GetActiveScene().name;
-        GUI.Label(new Rect(x - (width / 2f), y, width, height), nivelText, levelStyle);
-
-        float scoreY = y - scoreHeight - 10;
-        string scoreText = scorePlayerLeft + " - " + scorePlayerRight;
-        GUI.Label(new Rect(x - (scoreWidth / 2f), scoreY, scoreWidth, scoreHeight), scoreText, style);
-
-        float livesY = scoreY - height - 10;
         string livesText = "Vidas: " + playerLives;
-        GUI.Label(new Rect(x - (width / 2f), livesY, width, height), livesText, livesStyle);
+        GUI.Label(new Rect(x - (width / 2f), y, width, height), livesText, livesStyle);
+    }
+
+    void UpdateScoreText()
+    {
+        // Actualiza el texto de los TextMesh con los puntajes actuales
+        puntajeRightTextMesh.text = scorePlayerRight.ToString();
+        puntajeLeftTextMesh.text = scorePlayerLeft.ToString();
     }
 
     public void PlayerScoresPoint()
     {
         scorePlayerLeft++;
+        UpdateScoreText();
         CheckGameStatus();
     }
 
     public void EnemyScoresPoint()
     {
         scorePlayerRight++;
+        UpdateScoreText();
         LoseLife();
         CheckGameStatus();
     }
@@ -100,4 +99,3 @@ public class Score : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
-

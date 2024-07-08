@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class IAPlayer2 : MonoBehaviour
 {
-    public float speed = 7f;  
-    public Transform ball;    
-    public float reactionDelay = 0.2f; // retraza la reaccion (Lo voy a usar para aumentar dificultad en niveles)
-    public float reactionDistance = 5f; // Distancia a la que la IA empieza a reaccionar
-    public float errorMargin = 0.5f; // Margen de error 
+    public float velocidad = 7f;  
+    public Transform pelota;    
+    public float retrasoReaccion = 0.2f; // Retrasa la reacción (usado para aumentar dificultad en niveles)
+    public float distanciaReaccion = 5f; // Distancia a la que la IA empieza a reaccionar
+    public float margenError = 0.5f; // Margen de error 
 
-    private float nextActionTime = 0f;
+    private float tiempoProximaAccion = 0f;
 
     void Update()
     {
-        
-        if (Time.time >= nextActionTime)
+        if (Time.time >= tiempoProximaAccion)
         {
-            nextActionTime = Time.time + reactionDelay;
+            tiempoProximaAccion = Time.time + retrasoReaccion;
 
-            // Mover al marciano si está cerca de la pelota en el eje z
-            if (Mathf.Abs(transform.position.z - ball.position.z) <= reactionDistance)
+            // Mover al jugador AI si está cerca de la pelota en el eje Z
+            if (Mathf.Abs(transform.position.z - pelota.position.z) <= distanciaReaccion)
             {
-                //margen de error para que no sea tan perfecto
-                float targetZ = ball.position.z + Random.Range(-errorMargin, errorMargin);
-                Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y, targetZ);
-                transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+                // Margen de error para que no sea tan perfecto
+                float targetZ = pelota.position.z + Random.Range(-margenError, margenError);
+                targetZ = Mathf.Clamp(targetZ, -3.5f, 3.5f); // Limitar el movimiento entre -3.5 y 3.5 en el eje Z
+
+                Vector3 posicionObjetivo = new Vector3(transform.position.x, transform.position.y, targetZ);
+                transform.position = Vector3.Lerp(transform.position, posicionObjetivo, velocidad * Time.deltaTime);
             }
         }
     }
