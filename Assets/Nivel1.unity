@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.01037188, g: 0.02250734, b: 0.029795442, a: 1}
+  m_IndirectSpecularColor: {r: 0.006624031, g: 0.015374779, b: 0.021815993, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6922,10 +6922,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b587d864ac59609871fc51615e8432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImpulsoInicial: {x: 5, y: 0, z: 5}
+  ImpulsoInicial: {x: 7, y: 0, z: 5}
   colorChangeInterval: 0
   ballLight: {fileID: 0}
-  maxSpeed: 10
+  maxSpeed: 16
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &696669040
 Rigidbody:
@@ -20647,7 +20647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 2
   pelota: {fileID: 696669044}
-  retrasoReaccion: 0.1
+  retrasoReaccion: 0
   distanciaReaccion: 2
   margenError: 1
 --- !u!114 &1811373104
@@ -20710,10 +20710,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09896468
+  m_Radius: 0.07125103
   m_Height: 0.52506506
   m_Direction: 1
-  m_Center: {x: 0, y: 0.08451005, z: 0}
+  m_Center: {x: 0.0006572651, y: 0.08451005, z: -9.93549e-19}
 --- !u!95 &1811373108
 Animator:
   serializedVersion: 5
