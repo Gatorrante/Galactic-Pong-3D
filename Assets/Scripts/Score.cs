@@ -5,12 +5,10 @@ public class Score : MonoBehaviour
 {
     public int scorePlayerRight;
     public int scorePlayerLeft;
-    public int playerLives = 4; // Vidas iniciales del jugador
-    public GUIStyle livesStyle = new GUIStyle(); // Estilo para las vidas
+    public int playerLives = 4; //Vidas 
+    public GUIStyle livesStyle = new GUIStyle(); 
 
-    private int scoreToWin = 5; // Puntuación necesaria para ganar o reiniciar
-
-    // Referencias a los objetos TextMesh
+    private int scoreToWin = 5; 
     public TextMesh puntajeRightTextMesh;
     public TextMesh puntajeLeftTextMesh;
 
@@ -21,11 +19,11 @@ public class Score : MonoBehaviour
         livesStyle.alignment = TextAnchor.MiddleCenter;
         livesStyle.normal.textColor = Color.white;
 
-        // Asigna las referencias a los objetos TextMesh
+        //Texto referenciados
         puntajeRightTextMesh = GameObject.Find("Puntaje_R").GetComponent<TextMesh>();
         puntajeLeftTextMesh = GameObject.Find("Puntaje_L").GetComponent<TextMesh>();
 
-        // Inicializa los valores de los TextMesh
+        // Inicializa los valores de TextMesh
         UpdateScoreText();
     }
 
@@ -47,7 +45,7 @@ public class Score : MonoBehaviour
 
     void UpdateScoreText()
     {
-        // Actualiza el texto de los TextMesh con los puntajes actuales
+        // Actualiza textmesh a actuales
         puntajeRightTextMesh.text = scorePlayerRight.ToString();
         puntajeLeftTextMesh.text = scorePlayerLeft.ToString();
     }

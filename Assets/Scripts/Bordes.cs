@@ -6,15 +6,15 @@ public class Bordes : MonoBehaviour
 {
     public enum ePlayer { Left, Right }
     public ePlayer player;
-    public Score score;   // Referencia al script de puntuación
-    public AudioClip goalSound;  // Sonido de gol
-    private AudioSource audioSource;  // Referencia al componente AudioSource
+    public Score score;   //puntuación
+    public AudioClip goalSound;  // gol
+    private AudioSource audioSource;  //AudioSource
 
     void Start()
     {
-        // Obtener el componente AudioSource del objeto actual
+        // Obtener el componente AudioSource
         audioSource = GetComponent<AudioSource>();
-        // Asignar el clip de sonido si es necesario
+        
         if (goalSound != null)
         {
             audioSource.clip = goalSound;
@@ -26,24 +26,24 @@ public class Bordes : MonoBehaviour
         Ball ball = other.GetComponent<Ball>();
         if (ball != null)
         {
-            // Reproducir el sonido de gol si está asignado
+            // Sonido de gol
             if (goalSound != null && audioSource != null)
             {
                 audioSource.Play();
             }
 
-            // Resetea la posición de la pelota al centro
+            // Reset
             ball.transform.position = new Vector3(0f, 1f, 0f); 
 
             if (player == ePlayer.Right)
             {
-                // Punto para el jugador izquierdo porque el borde derecho fue golpeado
+                // Punto para el jugador izquierdo
                 score.PlayerScoresPoint();
                 Debug.Log("Punto para la tierra");
             }
             else if (player == ePlayer.Left)
             {
-                // Punto para el jugador derecho porque el borde izquierdo fue golpeado
+                // Punto jugador derecho
                 score.EnemyScoresPoint();
                 Debug.Log("Punto para los marcianos");
             }

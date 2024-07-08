@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class FanaticosController : MonoBehaviour
 {
-    public Transform pelota; // Referencia a la pelota
-    public List<Transform> npcTransforms = new List<Transform>(); // Lista de transforms de los NPCs
+    public Transform pelota; //pelota
+    public List<Transform> npcTransforms = new List<Transform>(); // Lista de  los NPCs
     public ePlayer jugador; // Enum para saber si es la barra izquierda o derecha
 
-    private float distanciaMaxima = 7f; // Distancia máxima a la meta
-    private List<float> posicionesYIniciales = new List<float>(); // Lista de posiciones Y iniciales de los NPCs
-    private float frecuenciaSaltoBase = 1f; // Frecuencia base de los saltos (ajustada a la mitad)
-    private float alturaSaltoBase = 0.25f; // Altura base de los saltos (ajustada a la mitad)
-    private float frecuenciaSaltoMaxima = 15f; // Frecuencia máxima de los saltos (ajustada a la mitad)
-    private float emocionMinima = 0.2f; // Emoción mínima del equipo contrario
+    private float distanciaMaxima = 7f; //
+    private List<float> posicionesYIniciales = new List<float>();
+    private float frecuenciaSaltoBase = 1f; 
+    private float alturaSaltoBase = 0.25f; 
+    private float frecuenciaSaltoMaxima = 15f; 
+    private float emocionMinima = 0.2f;
 
     void Start()
     {
@@ -53,17 +53,17 @@ public class FanaticosController : MonoBehaviour
             }
         }
 
-        // Ajusta la posición Y de los NPCs para simular saltos
+        //simular saltos
         for (int i = 0; i < npcTransforms.Count; i++)
         {
             Transform npc = npcTransforms[i];
             float posicionYInicial = posicionesYIniciales[i];
 
-            // Calcula la altura y frecuencia del salto basado en la emoción
+            // Calculo basado en la emoción
             float alturaSaltoActual = alturaSaltoBase * emocion;
             float frecuenciaSaltoActual = Mathf.Min(frecuenciaSaltoBase * emocion * 10, frecuenciaSaltoMaxima);
 
-            // Mueve el NPC en el eje Y para simular un salto
+            //NPC salta en eje Y
             float nuevaY = posicionYInicial + Mathf.Sin(Time.time * frecuenciaSaltoActual + i) * alturaSaltoActual;
             npc.position = new Vector3(npc.position.x, nuevaY, npc.position.z);
         }
