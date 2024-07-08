@@ -7,7 +7,7 @@ public class FanaticosController : MonoBehaviour
     public List<Transform> npcTransforms = new List<Transform>(); // Lista de  los NPCs
     public ePlayer jugador; // Enum para saber si es la barra izquierda o derecha
 
-    private float distanciaMaxima = 7f; //
+    private float distanciaMaxima = 7f; 
     private List<float> posicionesYIniciales = new List<float>();
     private float frecuenciaSaltoBase = 1f; 
     private float alturaSaltoBase = 0.25f; 
@@ -30,7 +30,7 @@ public class FanaticosController : MonoBehaviour
 
         if (jugador == ePlayer.Left)
         {
-            // Calcula la emoción basada en la distancia a la meta del jugador izquierdo
+            // Calcula emoción basada en la distancia a la meta del jugador izquierdo
             distanciaMeta = Mathf.Clamp(pelota.position.x, -distanciaMaxima, 0);
             emocion = 1f - Mathf.Abs(distanciaMeta / distanciaMaxima);
 
@@ -42,7 +42,7 @@ public class FanaticosController : MonoBehaviour
         }
         else if (jugador == ePlayer.Right)
         {
-            // Calcula la emoción basada en la distancia a la meta del jugador derecho
+            // Calculo de emoción basada en la distancia a la meta del jugador derecho
             distanciaMeta = Mathf.Clamp(pelota.position.x, 0, distanciaMaxima);
             emocion = 1f - Mathf.Abs(distanciaMeta / distanciaMaxima);
 
@@ -59,11 +59,11 @@ public class FanaticosController : MonoBehaviour
             Transform npc = npcTransforms[i];
             float posicionYInicial = posicionesYIniciales[i];
 
-            // Calculo basado en la emoción
+            // saltar depende de emoción
             float alturaSaltoActual = alturaSaltoBase * emocion;
             float frecuenciaSaltoActual = Mathf.Min(frecuenciaSaltoBase * emocion * 10, frecuenciaSaltoMaxima);
 
-            //NPC salta en eje Y
+            //restricción de salto en eje y
             float nuevaY = posicionYInicial + Mathf.Sin(Time.time * frecuenciaSaltoActual + i) * alturaSaltoActual;
             npc.position = new Vector3(npc.position.x, nuevaY, npc.position.z);
         }
