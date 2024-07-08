@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.006297185, g: 0.013738284, b: 0.020923562, a: 1}
+  m_IndirectSpecularColor: {r: 0.015659861, g: 0.03295835, b: 0.04863088, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6925,7 +6925,7 @@ MonoBehaviour:
   ImpulsoInicial: {x: 5, y: 0, z: 5}
   colorChangeInterval: 0
   ballLight: {fileID: 0}
-  maxSpeed: 12
+  maxSpeed: 16
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &696669040
 Rigidbody:
@@ -20647,9 +20647,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 4
   pelota: {fileID: 696669044}
-  retrasoReaccion: 0
-  distanciaReaccion: 5
-  margenError: 0.5
+  retrasoReaccion: 0.01
+  distanciaReaccion: 2
+  margenError: 0.3
 --- !u!114 &1811373104
 MonoBehaviour:
   m_ObjectHideFlags: 0

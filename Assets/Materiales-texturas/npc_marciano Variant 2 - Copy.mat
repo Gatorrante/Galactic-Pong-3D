@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: npc_marciano Variant
+  m_Name: npc_marciano Variant 2 - Copy
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 4309859850662032359, guid: 4d1d9f088a4ad1d4b87143aa30d73337, type: 3}
   m_ModifiedSerializedProperties: 0

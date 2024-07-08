@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0052841487, g: 0.012100453, b: 0.017833574, a: 1}
+  m_IndirectSpecularColor: {r: 0.012661286, g: 0.027015995, b: 0.041798104, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14153,8 +14153,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "JUEGO DESARROLLADO POR:\n\nDIEGO ALONSO MI\xD1ANO\n\nSERGIO ALEXANDER
-    HUAYLLAS\n\nProf: David William Cota Sencara"
+  m_text: "GRACIAS POR JUGAR!\ndesarrollado por:\n\nDIEGO ALONSO MI\xD1ANO\n\nSERGIO
+    ALEXANDER HUAYLLAS\n\nProf: David William Cota Sencara"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14181,8 +14181,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.26
-  m_fontSizeBase: 39.26
+  m_fontSize: 35.43
+  m_fontSizeBase: 35.43
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
