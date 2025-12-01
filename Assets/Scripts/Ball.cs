@@ -50,9 +50,9 @@ public class Ball : MonoBehaviour
     void FixedUpdate()
     {
         // limitar velocidad si la velocidad es mayor que la velocidad máxima
-        if (rb.velocity.magnitude > maxSpeed)
+        if (rb.linearVelocity.magnitude > maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
         }
     }
 
@@ -69,7 +69,7 @@ public class Ball : MonoBehaviour
         {
             // Reinicia posicion y vel
             transform.position = initialPosition;
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
             //impulso inicial
@@ -78,9 +78,9 @@ public class Ball : MonoBehaviour
         else
         {
            
-            if (rb.velocity.magnitude > maxSpeed)
+            if (rb.linearVelocity.magnitude > maxSpeed)
             {
-                rb.velocity = rb.velocity.normalized * maxSpeed;
+                rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
             }
         }
     }
@@ -90,7 +90,7 @@ public class Ball : MonoBehaviour
      public void ResetBall()
     {
         transform.position = initialPosition;
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(ImpulsoInicial, ForceMode.Impulse);
     }
